@@ -9,6 +9,21 @@ import scrapy
 
 
 class NeituiwangItem(scrapy.Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()
-    pass
+    person = scrapy.Field()
+    date = scrapy.Field()
+    work = scrapy.Field()
+    salary = scrapy.Field()
+    experience = scrapy.Field()
+    company = scrapy.Field()
+    address = scrapy.Field()
+    tag = scrapy.Field()
+    # requirement = scrapy.Field()
+    name = scrapy.Field()
+    company_link = scrapy.Field()
+    city = scrapy.Field()
+    homepage = scrapy.Field()
+    company_size = scrapy.Field()
+    company_field = scrapy.Field()
+    company_finance = scrapy.Field()
+    company_hope = scrapy.Field()
+    
