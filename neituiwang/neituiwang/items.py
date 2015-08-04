@@ -9,6 +9,7 @@ import scrapy
 
 
 class NeituiwangItem(scrapy.Item):
+    page_id = scrapy.Field()
     person = scrapy.Field()
     date = scrapy.Field()
     work = scrapy.Field()

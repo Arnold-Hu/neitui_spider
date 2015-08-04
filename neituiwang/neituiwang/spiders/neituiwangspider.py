@@ -12,13 +12,14 @@ class NeituiwangSpider(CrawlSpider):
 
     rules = [
         Rule(LinkExtractor(allow=('\?name=job&handle=detail&id=\d{6}&from=index')), follow=False, callback='parse_item'),
-        Rule(LinkExtractor(allow=('/neitui/type=all&page=\d{,5}.html',)), follow=True)
+        Rule(LinkExtractor(allow=('/neitui/type=all&page=\d+.html',)), follow=True)
     ]
 
     def parse_item(self, response):
         base = response.xpath('//div[@class="cont"]')
         company_part = response.xpath('//div[@class="plate company_information"]')
         item = NeituiwangItem()
+        item['page_id'] = response.xpath('//div[@class="handlerbar clearfix"]/a[1]/@href').re('\d{6}')
         item['person'] = base.xpath('div[1]/a[1]/text()').extract()  
         item['date'] = base.xpath('div[1]/text()').re('\d{2}.\d{2}.')
         item['work'] = base.xpath('div[2]/strong/text()').extract()
