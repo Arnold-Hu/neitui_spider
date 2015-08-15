@@ -1,18 +1,19 @@
-# *-* codi
+# *-* coding:utf-8 *-*
 import scrapy
-import re
+import re       						#载入正则表达式包
 from scrapy.spiders import CrawlSpider, Rule
 from scrapy.linkextractors import LinkExtractor
 from neituiwang.items import NeituiwangItem
 
-class NeituiwangSpider(CrawlSpider):
-    name = "neituiwang"
-    allowed_domains = ["neitui.me"]
-    start_urls = ["http://www.neitui.me/neitui/type=all.html"]
+class NeituiwangSpider(CrawlSpider):                  #使用CrawlSpider方法进行爬取以便对链接进行跟进
+    name = "neituiwang"    #爬虫的名字
+    allowed_domains = ["neitui.me"]                   #限制跟进网站的域名
+    start_urls = ["http://www.neitui.me/neitui/type=all.html"]         #爬虫开始的链接
 
     rules = [
         Rule(LinkExtractor(allow=('\?name=job&handle=detail&id=\d{6}&from=index')), follow=False, callback='parse_item'),
-        Rule(LinkExtractor(allow=('/neitui/type=all&page=\d+.html',)), follow=True)
+	#
+        Rule(LinkExtractor(allow=('/neitui/type=all&page=\d+\.html',)), follow=True)
     ]
 
     def parse_item(self, response):
