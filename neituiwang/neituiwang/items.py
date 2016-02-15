@@ -17,7 +17,7 @@ class NeituiwangItem(scrapy.Item):
     experience = scrapy.Field()
     company = scrapy.Field()
     address = scrapy.Field()
-    tag = scrapy.Field()
+    # tag = scrapy.Field()
     # requirement = scrapy.Field()
     name = scrapy.Field()
     company_link = scrapy.Field()
@@ -27,4 +27,4 @@ class NeituiwangItem(scrapy.Item):
     company_field = scrapy.Field()
     company_finance = scrapy.Field()
     company_hope = scrapy.Field()
-    
+
